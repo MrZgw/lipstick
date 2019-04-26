@@ -18,6 +18,8 @@
         <java.version>1.8</java.version>
         <project.encoding>UTF-8</project.encoding>
         <myexcel.version>2.1.3</myexcel.version>
+        <docker-maven-plugin.version>1.2.0</docker-maven-plugin.version>
+        <docker.image.prefix>wyh</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -53,6 +55,7 @@
     </dependencies>
 
     <build>
+        <finalName>lipstick</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -74,6 +77,22 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
         </plugins>
     </build>
