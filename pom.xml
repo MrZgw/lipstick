@@ -84,10 +84,6 @@
                 <version>${docker-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
                         <configuration>
                             <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                             <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
