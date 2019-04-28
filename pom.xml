@@ -86,7 +86,7 @@
                     <execution>
                         <configuration>
                             <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                            <dockerDirectory>src/main/docker</dockerDirectory>
+                            <dockerDirectory>docker</dockerDirectory>
                             <resources>
                                 <resource>
                                     <targetPath>/</targetPath>
