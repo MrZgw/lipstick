@@ -86,12 +86,13 @@
                     <execution>
                         <configuration>
                             <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                            <dockerDirectory>docker</dockerDirectory>
+                            <dockerDirectory>src/main/docker</dockerDirectory>
                             <resources>
                                 <resource>
                                     <targetPath>/</targetPath>
                                     <directory>${project.build.directory}</directory>
                                     <include>${project.build.finalName}.jar</include>
+                                    <include>${project.basedir}/src/main/docker/Dockerfile</include>
                                 </resource>
                             </resources>
                         </configuration>
